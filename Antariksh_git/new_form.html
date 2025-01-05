@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet">
+        <title>Registration Form</title>
+    </head>
+    
+    <body>
+        <section id="id_1">
+            <video autoplay muted loop id="background_vedio">
+                <source src="images/3.mp4" type="video/mp4">
+            </video>
+            <header style="font-size: 65px;text-align:center;">
+                Antariksh Club - The official Astronomy Club of VI 
+            </header>
+            <div style="font-size: 30px;text-align:center;">Explore the Cosmos with Antariksh</div>
+            <br>
+            <hr>
+        <div class="main_container">
+            <div class="image_container">
+                <img src="images.real/form_image.webp"> 
+            </div>
+            <div>
+                <form>
+                    <h1>Register Yourself now</h1>
+                    <div class="rform">
+                    <!-- <lable for="name">Name</lable> -->
+                    <input id="name" type="text" name="name" placeholder="Name" autocomplete="off" onkeydown="next(event, 'email')">
+                    <br>
+                    <!-- <lable for="email">email</lable> -->
+                    <input id="email" type="email" name="email" placeholder="email" autocomplete="off" onkeydown="next(event, 'Password')">
+                    <br>
+                    <!-- <label for="password">Password</label> -->
+                    <input id="Password" type="password" name="password" placeholder="Password" autocomplete="off">
+                    </div>
+                    <div class="dropdown">
+                        <button  class="dropdown-button" id="dropdownButton">Branch</button>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="updateText('CSSE')">CSSE</a>
+                            <a href="#" onclick="updateText('CSDS')">CSDS</a>
+                            <a href="#" onclick="updateText('CSIOT')">CSIOT</a>
+                        </div>
+                        </div> 
+                        <br>
+                        <button class="launch">
+                            Launch🚀
+                        </button>
+                </form>
+            </div>
+        </div>
+            <div>
+            <div>
+                <h2 style="margin-left:15px;">Contact Us</h2>
+                <ul style="margin-left:10px;">
+                    <li>🚀Phone:9128453468</li>
+                    <li>🚀email:antariksh@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            document.querySelector('.launch').addEventListener('click', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('Password').value;
+            const dropdownButton = document.getElementById('dropdownButton').textContent;
+
+            if (!name || !email || !password || dropdownButton === 'Branch') {
+                const warningDropdown = document.createElement('div');
+                warningDropdown.className = 'warning-dropdown';
+                warningDropdown.style.backgroundColor = 'red';
+                warningDropdown.style.color = 'white';
+                warningDropdown.style.position = 'absolute';
+                warningDropdown.style.top = 'calc(100% + 10px)';
+                warningDropdown.style.left = '0';
+                warningDropdown.style.padding = '10px';
+                warningDropdown.textContent = 'Please fill all the inputs';
+                this.parentNode.style.position = 'relative';
+                this.parentNode.appendChild(warningDropdown);
+
+                setTimeout(() => {
+                warningDropdown.remove();
+                }, 3000);
+            } else {
+                // Submit the form or perform the desired action
+            }
+            });
+        // </script>
+            function next(event , next_id){
+                if(event.key === 'Enter'){
+                    event.preventDefault();
+                    if (next_id) {
+                    document.getElementById(next_id).focus();
+                }
+                }
+            }
+            function updateText(selectedOption) {
+            document.getElementById("dropdownButton").textContent = selectedOption;
+        }
+        </script>
+        </body>
+</html>
